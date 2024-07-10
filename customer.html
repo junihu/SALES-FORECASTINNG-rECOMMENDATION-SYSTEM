@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+ 
+  .image_container2{
+    height: 300px; /* Adjust the height as needed */
+    width: 100%;
+    text-align: center;
+
+    
+  }
+  body{
+    font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+
+
+  }
+  .container1 {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #b3cdefc1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1, h2 {
+    color: #333;
+  }
+  p {
+    color: #666;
+  }
+  .module {
+    margin-bottom: 30px;
+  }
+  #img{
+    width: 90%;
+
+  }
+  .bg{
+    background-image: url("../static/images/customer_logo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 300px; 
+    width: 70%;
+    margin-left: 18%;
+    
+  }
+
+
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">ShopsMart</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="/customer">Customer</a></li>
+            <li><a href="/cpage2">Products</a></li>
+            <li><a href="/cpage3">Comparison</a></li>
+            <li><a href="/cpage4">Personalised</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="image_container2">
+        <div class="bg"></div>
+    </div>
+
+  
+    <div class="container text-center" id="description">    
+        <div class="container1">
+            <h1><b>Sales Forecasting and Customer Recommendation System</b></h1><br>
+            <div class="module">
+                <h2>Welcome to the Customer Module of the Sales Forecasting and Customer Recommendation System!</h2>
+                <h3>Introduction to the Customer Module:</h3>
+                <p>
+                    At the heart of our system lies the commitment to delivering personalized shopping experiences tailored to your unique preferences and needs. Whether you're searching for your favorite products or exploring new offerings, our Customer Module is designed to enhance your journey every step of the way. Let us guide you through the key features and functionalities crafted specifically with you in mind:
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>User Profile Creation:</h3>
+                <p>
+                    Embark on a personalized shopping experience by creating your user profile within our system. Your profile serves as the gateway to receiving tailored product recommendations that align with your tastes and preferences, ensuring that every shopping experience is uniquely yours.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Product Recommendation Algorithms:</h3>
+                <p>
+                    Discover new favorites and rediscover old classics with our advanced product recommendation algorithms. By analyzing your user data and understanding your preferences, our algorithms suggest products that resonate with your individual tastes and requirements, making every purchase a delight.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Product Comparison:</h3>
+                <p>
+                    Make informed decisions with ease by utilizing our product comparison feature. Whether you're weighing price, features, or other criteria, our intuitive comparison tool empowers you to find the perfect product that meets your needs, saving you time and effort in the decision-making process.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>User-Friendly Search and Filter Options:</h3>
+                <p>
+                    Navigate our vast selection of products effortlessly with our user-friendly search and filter options. From categories to price ranges to brands, our intuitive interface simplifies the process of finding products that match your preferences, ensuring that you find exactly what you're looking for with ease.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Secure User Authentication System:</h3>
+                <p>
+                    Your security and privacy are our top priorities. Our system implements a secure user authentication system to safeguard your data and ensure that your information remains confidential. Shop with confidence knowing that your privacy is protected every step of the way.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Performance, Security, Scalability, and Usability:</h3>
+                <p>
+                    We understand that performance, security, scalability, and usability are essential to delivering a seamless and satisfying shopping experience. Our system prioritizes rapid response times, stringent security measures, scalability to accommodate growth, and user-friendly interfaces to ensure that every interaction with our platform is a joyous one.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>In summary:</h3>
+                <p>
+                    The Customer Module of our Sales Forecasting and Customer Recommendation System is here to elevate your shopping experience to new heights. Whether you're browsing for essentials or indulging in luxuries, let us guide you on a journey of discovery and delight. Join us and experience the future of retail today!
+                </p>
+            </div>
+        </div>
+
+    </div><br>
+
+</body>
+</html>
+

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  .image_container{
+    height: 80lvh;
+    width: 100%;
+    text-align: center;
+    
+  }
+  body{
+    font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+
+
+  }
+  .container1 {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #b3cdefc1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1, h2 {
+    color: #333;
+  }
+  p {
+    color: #666;
+  }
+  .module {
+    margin-bottom: 30px;
+  }
+  #img{
+    margin-top: 80px;
+    width: 90%;
+
+  }
+
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">ShopsMart</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="/customer">Customer</a></li>
+            <li><a href="/vendor">Vendor</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
+            <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+    <div class="image_container">
+        <img id="img" src="{{ url_for('uploaded_file', filename=image) }}" class="img-fluid" alt="...">
+    </div>
+
+    
+    <div class="container text-center" id="description">    
+        <div class="container1">
+            <h1><b>Sales Forecasting and Customer Recommendation System</b></h1><br>
+            <div class="module">
+            <h2>Introduction to the Project:</h2>
+            <p>
+                Our Sales Forecasting and Customer Recommendation System stands as a pioneering solution in response to the evolving dynamics of the retail industry. In an era where data reigns supreme, retailers face the constant challenge of optimizing their inventory management while providing personalized shopping experiences to customers. Recognizing these challenges, our system leverages cutting-edge technology to bridge the gap between retailers and customers, enhancing decision-making processes and driving overall satisfaction. By amalgamating historical sales data, external sources, and advanced recommendation algorithms, we empower retailers to make informed decisions about their inventory while offering customers tailored product suggestions that align with their preferences and budget constraints. Our vision is to revolutionize the retail experience, fostering improved decision-making, revenue growth, and customer loyalty.
+            </p>
+            </div>
+            
+            <div class="module">
+            <h2>Vendor Module:</h2>
+            <p>
+                Our Vendor Module serves as a comprehensive toolkit for retailers, empowering them with the tools and insights necessary to excel in today's competitive market. Key features of the Vendor Module include:
+                <ul>
+                <li>User Registration and Authentication Mechanisms</li>
+                <li>Product Ranking Algorithms</li>
+                <li>Inventory Management Tools</li>
+                <li>Market Insights Through Data Analysis</li>
+                </ul>
+            </p>
+            </div>
+            
+            <div class="module">
+            <h2>Customer Module:</h2>
+            <p>
+                Our Customer Module caters to the needs of shoppers, delivering personalized recommendations and seamless shopping experiences. Key features of the Customer Module include:
+                <ul>
+                <li>User Profile Creation</li>
+                <li>Product Recommendation Algorithms</li>
+                <li>Product Comparison</li>
+                <li>User-Friendly Search and Filter Options</li>
+                </ul>
+            </p>
+            </div>
+            
+            <div class="module">
+            <h2>Performance, Security, Scalability, and Usability:</h2>
+            <p>
+                Ensuring high performance, robust security measures, scalability, and user-friendly interfaces are paramount in our system. We prioritize rapid response times, stringent security protocols, horizontal scalability, and intuitive interfaces to deliver a seamless and satisfying experience for both retailers and customers.
+            </p>
+            </div>
+            
+            <div class="module">
+            <h2>In summary:</h2>
+            <p>
+                Our Sales Forecasting and Customer Recommendation System represents a groundbreaking solution poised to revolutionize the retail industry. By empowering retailers with data-driven insights and offering customers personalized shopping experiences, we aim to drive innovation, efficiency, and satisfaction across the retail landscape. Join us in shaping the future of retail today!
+            </p>
+            </div>
+        </div>
+    
+    </div><br>
+
+</body>
+</html>

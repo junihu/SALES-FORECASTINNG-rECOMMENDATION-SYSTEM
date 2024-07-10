@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profit Margins</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Custom table styling */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* Highlighted fields */
+    .highlight {
+      font-weight: bold;
+      color: #007bff; /* Blue color */
+    }
+
+    .table_content {
+        margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">ShopsMart</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/home">Home</a></li>
+                <li><a href="/vendor">Vendor</a></li>
+                <li><a href="/vpage1">Manage Inventory</a></li>
+                <li><a href="/vpage2">Ranked Inventory</a></li>
+                <li><a href="/vpage3">Ranked Personal Inventory</a></li>
+                <li><a href="/vpage4">Profit Margins</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container table_content">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>User's Profit Margins</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Profit Margin (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product, margin in user_products %}
+                    <tr>
+                        <td>{{ product }}</td>
+                        <td>{{ margin }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>User's Combined Profit Margin:</strong> {{ user_combined_sum }}</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Overall Profit Margins</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Profit Margin (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product, margin in overall_products %}
+                    <tr>
+                        <td>{{ product }}</td>
+                        <td>{{ margin }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>Overall Combined Profit Margin:</strong> {{ overall_combined_sum }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>

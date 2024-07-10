@@ -1,0 +1,206 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport"
+        content="width=device-width, 
+                initial-scale=1, 
+                shrink-to-fit=no"> 
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <title>Signup Form</title> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            position: relative;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #030303;
+
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-signup {
+            background-color: #f87c0f;
+            border: none;
+        }
+
+        .btn-signup:hover {
+            background-color:#f87c0f;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .login-link {
+            text-align: center;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .err{
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+        img{
+            display: flex;
+        }
+        #error{
+            color: red;
+        }
+    </style> 
+</head> 
+
+<body> 
+    <img src="images/logo1.png" alt="" width="200px"> 
+    <div class="container">
+        <h1>SIGN UP FORM</h1> 
+        <form id="registrationForm" action="/register" method="POST"> 
+            <div class="form-group"> 
+                <label for="firstName">First Name</label> 
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" required> 
+                <p id="fname" class="err"></p>
+            </div> 
+            <div class="form-group"> 
+                <label for="lastName">Last Name</label> 
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                <p id="lname" class="err"></p> 
+            </div> 
+            <div class="form-group"> 
+                <label for="email">Email</label> 
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required> 
+                <div class="error-message" id="emailError"></div>
+                <p id="error">{{message}}</p>
+            </div> 
+            <div class="form-group"> 
+                <label for="password">Password</label> 
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required> 
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">Show</button>
+                    </div>
+                </div>
+                <div class="error-message" id="passwordError"></div> 
+            </div>
+            <div class="form-group"> 
+                <label for="confirmPassword">Confirm Password</label> 
+                <div class="input-group">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required> 
+                    
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="showConfirmPasswordButton">Show</button>
+                    </div>
+                    
+                     
+                </div>
+                <p id="conPass" class="err"></p>
+            </div> 
+            <button class="btn btn-danger btn-block btn-signup">Sign Up</button> 
+        </form> 
+        <div class="login-link mt-3"> 
+            Already have an account? <a href="login.html">Log In</a> 
+        </div> 
+    </div> 
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+    
+            var nameRegex = /^[A-Za-z]+$/;
+            var emailRegex = /\S+@\S+\.\S+/;
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    
+            var errorMessages = [];
+    
+            if (!nameRegex.test(firstName)) {
+                var fname = document.getElementById("fname")
+                fname.innerText = "First name should contain characters only."
+            }
+    
+            if (!nameRegex.test(lastName)) {
+                var lname = document.getElementById("lname")
+                lname.innerText = "Last name should contain characters only."
+            }
+    
+            if (!emailRegex.test(email)) {
+                errorMessages.push("Invalid email format.");
+            }
+    
+            if (!passwordRegex.test(password)) {
+                errorMessages.push("Password should contain at least one digit, one lowercase, one uppercase, one special character, and be at least 8 characters long.");
+            }
+    
+            if (password !== confirmPassword) {
+                var pass = document.getElementById("conPass")
+                pass.innerText = "Password and confirm password do not match."
+            }
+    
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("passwordError").innerHTML = "";
+    
+            if (errorMessages.length > 0) {
+                var errorMessage = errorMessages.join("<br>");
+                document.getElementById("passwordError").innerHTML = errorMessage;
+                return;
+            }
+    
+            document.getElementById("registrationForm").submit();
+        });
+    
+        document.getElementById("showPasswordButton").addEventListener("click", function() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                this.textContent = "Show";
+            }
+        });
+    
+        document.getElementById("showConfirmPasswordButton").addEventListener("click", function() {
+            var confirmPasswordInput = document.getElementById("confirmPassword");
+            if (confirmPasswordInput.type === "password") {
+                confirmPasswordInput.type = "text";
+                this.textContent = "Hide";
+            } else {
+                confirmPasswordInput.type = "password";
+                this.textContent = "Show";
+            }
+        });
+    </script> 
+    
+</body> 
+
+</html>

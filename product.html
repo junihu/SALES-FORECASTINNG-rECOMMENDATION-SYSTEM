@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Product Details</title>
+    <!-- Add any necessary CSS stylesheets or libraries here -->
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */ 
+        .navbar {
+           margin-bottom: 0;
+           border-radius: 0;
+           background-color: #333; /* Dark background color for navbar */
+        }
+        /* Add any custom CSS styles here */
+        .product-details-container {
+            padding: 40px; /* Increased padding */
+        }
+        
+        .product-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px; /* Added border-radius for a curved border */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Added box-shadow for a 3D effect */
+        }
+
+        .product-name {
+            font-size: 32px; /* Increased font size */
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Arial', sans-serif; /* Changed font style */
+        }
+
+        .product-price {
+            font-size: 24px; /* Adjusted font size */
+            color: #007bff;
+            margin-bottom: 20px; /* Increased distance from details */
+            font-family: 'Arial', sans-serif; /* Changed font style */
+        }
+
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .review-form {
+            margin-top: 40px;
+        }
+
+        .details-heading {
+            font-size: 24px; /* Adjusted font size */
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Arial', sans-serif; /* Changed font style */
+        }
+
+        /* Center align elements */
+        .center-align {
+            text-align: center;
+        }
+
+        /* Adjust margin for centered elements */
+        .centered-margin {
+            margin-top: 20px;
+        }
+
+        /* Adjust the back button in the navbar */
+        .back-button {
+            background-color: #333;
+            color: #bcbcbc;
+            padding: 15px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            font-family: inherit;
+        }
+        /* Change text color on hover */
+        .back-button:hover {
+            color: #fff;
+        }
+
+        .stars-container {
+            display: flex;
+            justify-content: center; /* Center stars horizontally */
+        }
+        .star {
+            font-size: 32px; /* Adjust star size */
+            color: gold;
+            cursor: pointer;
+        }
+        .submit-review-heading {
+            text-align: center; /* Center align the heading */
+        }
+        .product-reviews-heading {
+            text-align: center; /* Center align the heading */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">ShopsMart</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/home">Home</a></li>
+              <li><a href="/customer">Customer</a></li>
+              <li><a href="/cpage2">Products</a></li>
+              <li><a href="/cpage3">Comparison</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+              <li><a href="/edit_profile"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li><button class="back-button" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> Back</button></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container product-details-container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Replace backslash (\) with forward slash (/) in the image filename -->
+                {% set image_filename = product[4].replace("\\", "/").replace("uploads", "") %}
+                <img src="{{ url_for('uploaded_file', filename=image_filename) }}" alt="Product Image" class="product-image">
+            </div>
+            <div class="col-md-6">
+                <h1 class="product-name">{{ product[1] }}</h1>
+                <p class="product-price">Rs. {{ product[2] }}</p>
+                <!-- Added details heading and adjusted margin -->
+                <h2 class="details-heading">Details</h2>
+                <p class="product-description">{{ product[3] }}</p>
+            </div>
+        </div>
+    <!-- Centered review submission form -->
+    <div class="row centered-margin">
+        <div class="col-md-12 center-align">
+            <!-- Review Submission Form -->
+            <div class="review-form">
+                <h3 class="submit-review-heading">Submit a Review</h3>
+                <form action="{{ url_for('product', product_id=product[0]) }}" method="POST">
+                    <div class="form-group">
+                        <label for="stars">Review</label>
+                        <div class="stars-container">
+                            <span class="star" onclick="setStars(1)">&#9734;</span>
+                            <span class="star" onclick="setStars(2)">&#9734;</span>
+                            <span class="star" onclick="setStars(3)">&#9734;</span>
+                            <span class="star" onclick="setStars(4)">&#9734;</span>
+                            <span class="star" onclick="setStars(5)">&#9734;</span>
+                        </div>
+                        <input type="hidden" id="stars-input" name="stars" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review"></label>
+                        <textarea class="form-control" id="review" name="review" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="container">
+        <h2 class>Product Reviews</h2>
+        <div class="product-box">
+            {% for review in reviews %}
+                <div class="review-box">
+                    <p class="review-username">Username: {{ review[1] }}</p>
+                    <p class="review-stars">Stars: 
+                        {% for _ in range(review[2]) %}
+                            &#9733;
+                        {% endfor %}
+                    </p>
+                    <p class="review-text">{{ review[3] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        function setStars(stars) {
+            // Set the value of the hidden input field to the selected number of stars
+            document.getElementById('stars-input').value = stars;
+            // Update the star icons visually based on the selected number of stars
+            var starElements = document.querySelectorAll('.star');
+            for (var i = 0; i < stars; i++) {
+                starElements[i].innerHTML = '&#9733;'; // Filled star
+            }
+            for (var j = stars; j < starElements.length; j++) {
+                starElements[j].innerHTML = '&#9734;'; // Empty star
+            }
+        }
+    </script>
+    <script>
+        // JavaScript function to navigate back to cpage2.html
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Custom table styling */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fff;
+    }
+    tr:nth-child(odd) {
+        background-color: #fff;
+      }
+
+    
+    /* Highlighted fields */
+    .highlight {
+      font-weight: bold;
+      color: #007bff; /* Blue color */
+    }
+    .search{
+        text-align: center;
+    }
+    .search h2{
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
+        top: 5px;
+    }
+    .formi{
+        display: inline-block !important;
+        width: 60%;
+        margin: 25px;
+
+
+    }
+    .formi input{
+        display: inline-block !important;
+        width: 80%;
+    }
+    .formi button{
+        background-color: #007bff;
+        color: white;
+        margin-left: 5px;
+
+    }
+    .table_content h2{
+        text-align: center;
+        margin-top: 30px !important;
+    }
+
+    /* #table .hidden_row { 
+			display: none; 
+		}  */
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">ShopsMart</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="/vendor">Vendor</a></li>
+            <li><a href="/vpage1">Manage Inventory</a></li>
+            <li><a href="/vpage2">Ranked Inventory</a></li>
+            <li><a href="/vpage3">Ranked Personal Inventory</a></li>
+            <li><a href="/vpage4">Profit Margins</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+    <div class="container">
+        <div class="search">
+            <!-- <h2>Search Product</h2> -->
+            <form class="formi">
+                <input class="form-control me-2" type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+        <div class="table_content">
+            <h2 >Ranked Product Data</h2>
+            <table class="table table-striped" id="rankedTable">
+                <thead>
+                <tr>
+                    <th>L1 Category</th>
+                    <th>L2 Category</th>
+                    <th>Product Name</th>
+                    <th>SKU</th>
+                    <th>GMV</th>
+                    <th>Gross Items</th>
+                    <th>Gross Orders</th>
+                    <th>NMV</th>
+                    <!-- <th>Net Items</th> 
+                    <th>Net Orders</th> -->
+                </tr>
+                </thead>
+                <tbody>
+                  {% set counter = 0 %}
+                    {% set displayed_products = [] %}
+                    {% set counter = 0 %}
+                    {% for row in rank_inventory %}
+                      {% if row[2] not in displayed_products %}
+                        {% set displayed_products = displayed_products.append(row[2]) %}
+                        <tr>
+                          <td>{{ row[0] }}</td>
+                          <td>{{ row[1] }}</td>
+                          <td>{{ row[2] }}</td>
+                          <td>{{ row[3] }}</td>
+                          <td>{{ row[4] }}</td>
+                          <td>{{ row[5] }}</td>
+                          <td>{{ row[6] }}</td>
+                          <td>{{ row[7] }}</td>
+                          <!--<td>{{ row[8] }}</td>
+                          <td>{{ row[9] }}</td> -->
+                        </tr>
+                        <tr> 
+                            <td colspan=9 class="destroy"> 
+                                <canvas id="canva{{ loop.index }}" height="60%"></canvas>
+                            </td> 
+                        </tr> 
+                      {% endif %}
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+        <canvas id="canva1"></canvas>
+    
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script> 
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> 
+    <script>
+
+
+fetch('/get_data')
+    .then(response => response.json()) // Parse the JSON response
+    .then(data => {
+        // Use the retrieved data
+        console.log(data);
+        for (let i=0; i<data.length; i++) {
+            var xValues = ["Net Items", "Net Orders"];
+            var yValues = [data[i][8], data[i][9]];
+            var barColors = ["#b91d47", "#00aba9"];
+            
+            new Chart("canva"+i, {
+                type: "bar", // Changed to bar type
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Net Items vs Net Orders"
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+
+      // var p = 0;
+      // for (let i = 0; i < 3; i++) {
+      //   var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+      //       var yValues = [55, 49, 44, 24, 15];
+      //       var barColors = [
+      //       "#b91d47",
+      //       "#00aba9",
+      //       "#2b5797",
+      //       "#e8c3b9",
+      //       "#1e7145"
+      //   ]; 
+      //   new Chart("canva"+i, {
+      //     type: "pie",
+      //     data: {
+      //       labels: xValues,
+      //       datasets: [{
+      //         backgroundColor: barColors,
+      //         data: yValues
+      //       }]
+      //     },
+      //     options: {
+      //       title: {
+      //         display: true,
+      //         text: "World Wide Wine Production 2018"
+      //       }
+      //     }
+      //   });
+      //   i++;
+      //   console.log(i);
+      //   }
+              
+
+        function filterProducts() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("rankedTable");
+        tr = table.getElementsByTagName("tr");
+
+        //removeCanvasRow();
+
+        hideElementsByClass();
+
+        if (filter.length == 0) {
+          showElementsByClass();
+        }
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }       
+        }
+        }
+
+        function createRow() {
+            var tableBody = document.getElementById('rankedTable');
+
+            var row = document.createElement('tr');
+            var rowId = 'hidden_row' + i;
+            row.setAttribute('onclick', "showHideRow('" + rowId + "')");
+            row.innerHTML = '<td>Row ' + (i + 1) + '</td>'; // Modify this line to include additional cells if needed
+            tableBody.appendChild(row);
+        }
+
+        function removeCanvasRow() {
+            var destroyCells = document.querySelectorAll('.destroy'); // Get all elements with class 'destroy'
+            destroyCells.forEach(function(cell) {
+                cell.parentNode.removeChild(cell); // Remove the entire parent node of each 'destroy' cell
+            });
+        }
+
+        function hideElementsByClass() {
+            var elements = document.getElementsByClassName('destroy');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.display = "none";
+            }
+        }
+
+        function showElementsByClass() {
+            var elements = document.getElementsByClassName('destroy');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.display = "";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

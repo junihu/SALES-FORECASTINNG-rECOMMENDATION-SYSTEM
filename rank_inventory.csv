@@ -1,0 +1,151 @@
+L1_Category,L2_Category,product_name,sku,GMV,Gross_Items,Gross_Orders,NMV,Net_items,NetOrders
+Pharmacy,Pink Eye,Dettol Antibacterial Handwash | Original - 150ml,6.00E+12,2065,7,7,1475,5,5
+Pharmacy,Pink Eye,Siena Hand Sanitizer | Fresh - 60ml,8.96E+12,135,1,1,135,1,1
+Pharmacy,Pink Eye,Dettol Antibacterial Skincare Soap - 115gm,6.00E+12,1200,8,7,1050,7,6
+Pharmacy,Pink Eye,Dettol Antibacterial Handwash | Original - 250ml,6.00E+12,790,2,2,395,1,1
+Pharmacy,Pink Eye,Dettol Antiseptic Liquid - 100ml,6.00E+12,385,1,1,0,0,0
+Pharmacy,Pink Eye,Dettol Antibacterial Hand Sanitizer | Original - 50ml,8.96E+12,1000,4,4,1000,4,4
+Pharmacy,Pink Eye,Dettol Antibacterial Original Soap - 115gm,6.00E+12,3600,24,16,2700,18,13
+Pharmacy,Pink Eye,Al Khair Rose Water Spray - 120ml,8.95E+11,460,2,2,230,1,1
+Pharmacy,Pink Eye,Hemani Rose Water Facial Spray - 120ml,8.96E+12,798.2,3,3,532,2,2
+Pharmacy,Pink Eye,Dettol Liquid Handwash Pouch | Skin Care - 150ml,6.00E+12,860,4,4,645,3,3
+Pharmacy,Pink Eye,Dettol Antibacterial Hand Sanitizer | Original - 50ml,8.96E+12,750,3,3,750,3,3
+Pharmacy,Pink Eye,Dettol Antiseptic Liquid - 500ml,8.96E+12,1275,1,1,1275,1,1
+Pharmacy,Pink Eye,Dettol Antiseptic Liquid - 50ml,6.00E+12,2115,9,9,1645,7,7
+Personal Care,Bodywash & Shower Gel,Nivea Deep Shower Gel for Men | Woody Scent - 250ml,4.01E+12,2910,4,4,2160,3,3
+Personal Care,Handwash & Sanitizers,Lifebuoy Total 10 Handwash - 200ml,8.96E+12,6940,32,24,6720,31,23
+Personal Care,Bodywash & Shower Gel,Imperial Leather Shower Gel (Revitalising) - 400ml,5.00E+12,399,1,1,399,1,1
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Ocean Fresh - 500ml,6.29E+12,4850,19,18,4600,18,17
+Personal Care,Bodywash & Shower Gel,Adidas AdiPure Pure Performance Shower Gel for Women - 250ml,3.61E+12,3780,7,7,3780,7,7
+Personal Care,Bodywash & Shower Gel,Adidas Shower Gel | Climacool - 250ml,3.61E+12,8345,15,15,7215,13,13
+Personal Care,Handwash & Sanitizers,Siena Liquid Handwash Refill | Pink Blush - 400ml,8.96E+12,12735,60,53,12150,57,50
+Personal Care,Soaps,Lux Rose Glow Soap (Pink) - 132gm,8.96E+12,12150,90,73,10125,75,61
+Personal Care,Handwash & Sanitizers,Dettol Antibacterial Handwash | Skin Care - 150ml,6.00E+12,3230,11,10,2640,9,8
+Personal Care,Soaps,Dettol Antibacterial Soothe Soap - 115gm,8.96E+12,13860,97,78,11370,80,65
+Personal Care,Handwash & Sanitizers,Dettol Liquid Handwash Pouch | Original - 150ml,6.00E+12,3225,15,14,3010,14,13
+Personal Care,Soaps,Protex Bar Soap | Aloe - 135gm,8.89E+12,14289,109,92,11537,88,77
+Personal Care,Handwash & Sanitizers,Imperial Leather Handwash (Meadow Honey) - 300ml,5.00E+12,7764,36,32,5892,28,24
+Personal Care,Handwash & Sanitizers,Hemani Anti-Bacterial Liquid Handwash - 500ml,8.96E+12,6476,21,19,5866,19,17
+Personal Care,Handwash & Sanitizers,Safeguard Liquid Handwash Refill | Lemon Fresh - 180ml,8.00E+12,9440,51,49,8704,47,45
+Personal Care,Soaps,Lifebuoy Total Protect Soap - 103gm,8.96E+12,26193,490,433,22232,434,390
+Personal Care,Soaps,Protex Bar Soap | Gentle - 130gm,8.89E+12,6015,46,38,5226,40,33
+Personal Care,Handwash & Sanitizers,Siena Liquid Handwash Refill | Aqua Kiss - 400ml,8.96E+12,16349,79,63,14433,70,56
+Personal Care,Handwash & Sanitizers,Dettol Antibacterial Hand Sanitizer | Original - 50ml,8.96E+12,2250,9,7,1750,7,6
+Personal Care,Soaps,Capri Soap Pink | Single - 120gm,8.96E+12,7500,58,47,6845,53,44
+Personal Care,Handwash & Sanitizers,Ryans Handwash | Tropical Forest - 500ml,5.91E+12,2465,8,8,2465,8,8
+Personal Care,Bodywash & Shower Gel,Adidas Victory League Simulating Shower Gel - 250ml,3.61E+12,8820,18,17,5390,11,11
+Personal Care,Bodywash & Shower Gel,Doy Shower Scrub | Green Tea - 725ml,8.96E+12,8000,10,10,8000,10,10
+Personal Care,Bodywash & Shower Gel,Loreal Men Expert Shower Gel | Pure Carbon - 300ml,3.60E+12,2550,5,5,2040,4,4
+Personal Care,Handwash & Sanitizers,Siena Liquid Handwash | Pink Blush - 500ml,8.96E+12,10766,42,34,10481,41,33
+Personal Care,Handwash & Sanitizers,Imperial Leather Handwash (Botanical) - 300ml,5.00E+12,3826,14,14,2670,10,10
+Personal Care,Handwash & Sanitizers,Siena Liquid Handwash | Aqua Kiss - 500ml,8.96E+12,12269,47,40,12269,47,40
+Personal Care,Soaps,Lifebuoy Lemon Fresh Soap - 106gm,8.96E+12,4910,56,39,4640,53,38
+Personal Care,Soaps,Lux Purple Lotus Soap (Purple) - 132gm,8.96E+12,13480,98,75,11550,84,64
+Personal Care,Handwash & Sanitizers,Palmolive Naturals Antibacterial Handwash | White Tea - 225ml,8.89E+12,9267,36,34,8747,34,32
+Personal Care,Soaps,Protex Bar Soap | Gentle (Saver Pack) - Pack of 3 x 130gm,8.89E+12,26665,74,64,21649,60,53
+Personal Care,Handwash & Sanitizers,Dettol Antibacterial Handwash | Original - 250ml,6.00E+12,4345,11,9,3555,9,8
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Radiant Glow (Saver Pack) - Pack of 3 x 130gm,8.89E+12,231667,693,536,205265,615,474
+Personal Care,Soaps,Safeguard Bar Soap Floral Scent - 175gm,8.00E+12,1922,9,9,1922,9,9
+Personal Care,Soaps,Safeguard Bar Soap Floral Scent - Pack of 3 x 125gm,8.01E+12,510,1,1,510,1,1
+Personal Care,Soaps,Safeguard Bar Soap Pure White - 175gm,8.00E+12,7193,34,28,6518,31,26
+Personal Care,Bodywash & Shower Gel,Adidas Team Force Shower Gel for Men - 250ml,3.61E+12,7350,15,15,7350,15,15
+Personal Care,Soaps,Lux Fresh Splash Soap (Green) - 100gm,8.96E+12,10680,89,76,9240,77,67
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Whitening - 500ml,6.30E+12,14365,54,51,13350,50,47
+Personal Care,Handwash & Sanitizers,Swansi Handwash | Lavender - 500ml,7.68E+12,1050,5,5,840,4,4
+Personal Care,Bodywash & Shower Gel,Duvera Shower Gel | French Lavender - 725ml,8.96E+12,15179,19,19,12782,16,16
+Personal Care,Soaps,Capri Soap Blue | Single - 120gm,8.96E+12,10300,78,62,7110,54,46
+Personal Care,Soaps,Dettol Antibacterial Fresh Soap - 115gm,8.96E+12,9345,64,52,7860,54,44
+Personal Care,Handwash & Sanitizers,Safeguard Handwash Liquid (Pure White) - 420ml,8.00E+12,3470,10,10,2740,8,8
+Personal Care,Handwash & Sanitizers,Ryans Handwash | French Lavender - 500ml,5.91E+12,3575,12,12,3575,12,12
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Relaxing - 500ml,6.29E+12,7075,25,24,6270,22,21
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Anti Bacterial - 500ml,6.30E+12,4695,18,17,4125,16,15
+Personal Care,Handwash & Sanitizers,Palmolive Naturals Aloe Vera & Chamomile Handwash - 225ml,8.89E+12,16325,67,67,13619,56,56
+Personal Care,Bodywash & Shower Gel,Loreal Men Expert Shower Gel | Cool Power - 300ml,3.60E+12,8050,14,14,5750,10,10
+Personal Care,Bodywash & Shower Gel,Loreal Men Expert Shower Gel | Invincible Sport - 300ml,3.60E+12,4080,8,8,3570,7,7
+Personal Care,Bodywash & Shower Gel,Adidas Shower Gel | Pure Game - 250ml,3.61E+12,4615,8,8,4615,8,8
+Personal Care,Bodywash & Shower Gel,Adidas Dynamic Pulse Shower Gel for Men - 250ml,3.61E+12,3397,6,6,2168,4,4
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Moisturizing - 500ml,6.30E+12,8735,33,33,7735,29,29
+Personal Care,Bodywash & Shower Gel,Doy Shower Scrub | Charming Rose - 725ml,8.96E+12,8000,10,10,8000,10,10
+Personal Care,Handwash & Sanitizers,Safeguard Liquid Handwash | Lemon Fresh - 200ml,8.00E+12,830,3,3,830,3,3
+Personal Care,Handwash & Sanitizers,Lifebuoy Total 10 Handwash Refill - 450ml,8.96E+12,16600,50,48,13300,40,39
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Radiant Glow  - 135gm,8.89E+12,31296,255,185,25740,210,157
+Personal Care,Soaps,Lifebuoy Care & Protect Soap - 103gm,8.96E+12,11700,116,84,10755,107,78
+Personal Care,Bodywash & Shower Gel,Doy Shower Cream | Aloe Vera - 725ml,8.96E+12,8930,12,12,8190,11,11
+Personal Care,Handwash & Sanitizers,Palmolive Naturals Anti-Bacterial Handwash (Refill Pouch) - 1000ml,8.89E+12,10310,14,13,8810,12,12
+Personal Care,Bodywash & Shower Gel,Adidas Adipure Shower Gel for Men - 250ml,3.61E+12,3920,8,8,2940,6,6
+Personal Care,Handwash & Sanitizers,Imperial Leather Handwash (Cotton) - 300ml,5.00E+12,4721,19,19,3854,16,16
+Personal Care,Soaps,Doy Soap | Mint Natural - 125gm,8.90E+12,19520,108,67,16470,91,57
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Moisturizing Glow - 165gm,8.89E+12,28070,198,99,26824,189,94
+Personal Care,Bodywash & Shower Gel,Nivea Fresh Power Fruit Shower Gel - 250ml,4.01E+12,1440,2,2,1440,2,2
+Personal Care,Bodywash & Shower Gel,Imperial Leather Shower Gel (Polneysian) - 400ml,5.00E+12,798,2,2,798,2,2
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Hydrating Glow - 130gm,8.89E+12,32583,262,201,27433,221,170
+Personal Care,Soaps,Lux Velvet Glow Soap (White) - 132gm,8.96E+12,115,1,1,115,1,1
+Personal Care,Soaps,Dettol Antibacterial Cool Soap - 115gm,8.96E+12,43710,294,208,40155,270,190
+Personal Care,Bodywash & Shower Gel,Adidas UEFA Champions League Dare Edition Shower Gel - 250ml,3.61E+12,4579,8,8,4579,8,8
+Personal Care,Soaps,Dettol Antibacterial Original Soap - 115gm,6.00E+12,17550,118,84,16950,114,80
+Personal Care,Bodywash & Shower Gel,Doy Shower Cream | Cocoa Butter - 725ml,8.96E+12,12660,17,17,10430,14,14
+Personal Care,Soaps,Capri Aloe Nurture Honey & Milk Soap | Single - 100gm,8.96E+12,6345,58,44,5475,50,39
+Personal Care,Soaps,Lux Velvet Glow Soap (White) | Trio Pack - Pack of 3 x 145gm,8.96E+12,69860,188,165,64610,174,152
+Personal Care,Handwash & Sanitizers,Dettol Liquid Handwash Pouch | Skin Care - 150ml,6.00E+12,4730,22,21,3655,17,17
+Personal Care,Soaps,Lux Rose Glow Soap (Pink) - 132gm,8.96E+12,625,5,4,395,3,2
+Personal Care,Soaps,Protex Bar Soap | Aloe (Saver Pack) - Pack of 3 x 130gm,8.89E+12,27715,78,73,25185,71,66
+Personal Care,Bodywash & Shower Gel,Duvera Shower Gel | Aqua Splash - 725ml,8.96E+12,7988,10,10,7988,10,10
+Personal Care,Bodywash & Shower Gel,Adidas Ice Dive Marine Shower Gel for Men - 250ml,3.61E+12,6144,10,10,5545,9,9
+Personal Care,Soaps,Safeguard Bar Soap Floral Scent - Pack of 3 x 175gm,8.01E+12,12662,21,19,11437,19,17
+Personal Care,Handwash & Sanitizers,Ryans Handwash | Wild Berries - 500ml,5.91E+12,7720,26,25,7150,24,23
+Personal Care,Soaps,Lifebuoy Nature Soap - 98gm,8.96E+12,22753,445,380,19527,391,336
+Personal Care,Handwash & Sanitizers,Lifebuoy Mild Care Handwash Refill - 450ml,8.96E+12,10890,33,33,9570,29,29
+Personal Care,Handwash & Sanitizers,Palmolive Naturals Milk & Honey Handwash - 225ml,8.89E+12,6444,26,26,6189,25,25
+Personal Care,Handwash & Sanitizers,Imperial Leather Handwash (Polneysian) - 300ml,5.00E+12,2275,7,7,2275,7,7
+Personal Care,Soaps,Protex Bar Soap | Balance - 135gm,8.89E+12,2892,22,17,2762,21,16
+Personal Care,Bodywash & Shower Gel,Nivea Lemon Grass & Oil Shower Gel - 250ml,4.01E+12,15120,21,21,14400,20,20
+Personal Care,Handwash & Sanitizers,Swansi Handwash | Lemon - 500ml,7.68E+12,2310,11,11,2310,11,11
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Radiant Glow  - 165gm,8.89E+12,45735,328,170,41531,298,152
+Personal Care,Handwash & Sanitizers,Dettol Antibacterial Hand Sanitizer | Original - 50ml,8.96E+12,5580,21,18,4830,18,15
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Refreshing Glow (Saver Pack) - Pack of 3 x 100gm,8.89E+12,292458,1073,859,249915,918,748
+Personal Care,Handwash & Sanitizers,Dettol Antibacterial Handwash | Original - 150ml,6.00E+12,5605,19,13,5310,18,12
+Personal Care,Soaps,Lux Purple Lotus Soap (Purple) - 132gm,8.96E+12,12165,90,71,10370,77,65
+Personal Care,Soaps,Protex Bar Soap (Saver Pack) - Balance | Pack of 3 x 130gm,8.89E+12,31738,94,81,28898,86,73
+Personal Care,Handwash & Sanitizers,Siena Hand Sanitizer | Fresh - 60ml,8.96E+12,2891,23,21,2486,20,19
+Personal Care,Soaps,Capri Soap Purple | Single - 120gm,8.96E+12,8910,68,62,7870,60,54
+Personal Care,Soaps,Protex Bar Soap | Balance - 135gm,8.89E+12,1843,14,13,1711,13,12
+Personal Care,Soaps,Safeguard Bar Soap Pure White - Pack of 3 x 135gm,8.01E+12,20765,45,43,16590,36,34
+Personal Care,Soaps,Lux Velvet Glow Soap (White) - 132gm,8.96E+12,18875,191,161,14440,155,134
+Personal Care,Soaps,Safeguard Bar Soap Pure White - Pack of 3 x 175gm,8.01E+12,11531,19,16,8561,14,12
+Personal Care,Soaps,Lux Purple Lotus Soap (Purple) - 100gm,8.96E+12,480,4,4,480,4,4
+Personal Care,Soaps,Lux Velvet Glow Soap (White) - 100gm,8.96E+12,12360,103,68,9960,83,61
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Silky Touch - 500ml,6.29E+12,4720,18,18,4720,18,18
+Personal Care,Soaps,Lifebuoy Care & Protect Soap - 103gm,8.96E+12,12685,121,87,11110,106,77
+Personal Care,Soaps,Capri Soap White | Family Pack - Pack of 3 x 120gm,8.96E+12,32650,92,76,28780,81,70
+Personal Care,Soaps,Capri Soap Green | Single - 120gm,8.96E+12,1500,12,12,1240,10,10
+Personal Care,Soaps,Lux Velvet Glow Soap (White) - 100gm,8.96E+12,23739,318,302,18769,247,236
+Personal Care,Soaps,Lux Soft Touch Soap | Trio Pack - 135gm,8.96E+12,13615,37,28,11305,31,24
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Refreshing Glow - 135gm,8.89E+12,115,1,1,115,1,1
+Personal Care,Soaps,Doy Soap | Classic - 125gm,5.91E+12,14410,79,63,12410,68,55
+Personal Care,Handwash & Sanitizers,Safeguard Handwash Liquid (Floral Scent) - 420ml,8.00E+12,4500,11,10,4100,10,9
+Personal Care,Soaps,Protex Bar Soap (Saver Pack) - Balance | Pack of 3 x 130gm,8.89E+12,1065,3,3,1065,3,3
+Personal Care,Handwash & Sanitizers,Siena Liquid Handwash | Berry Splash - 500ml,8.96E+12,16205,65,55,14365,57,47
+Personal Care,Soaps,Capri Soap Blue | Family Pack - Pack of 3 x 120gm,8.96E+12,22235,61,58,18585,51,49
+Personal Care,Soaps,Lux Rose Glow Soap (Pink) | Trio Pack - Pack of 3 x 128gm,8.96E+12,135905,363,330,115535,309,284
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Moisturizing Glow  - 130gm,8.89E+12,47556,395,273,42501,353,245
+Personal Care,Soaps,Dettol Antibacterial Skincare Soap - 115gm,6.00E+12,13620,93,76,12285,84,68
+Personal Care,Soaps,Capri Soap Pink | Family Pack - Pack of 3 x 120gm,8.96E+12,31000,86,77,26270,73,68
+Personal Care,Soaps,Bold Deo Moisturizing 3 in 1 Soap | Noir - 135g,8.96E+12,12135,70,63,10595,61,54
+Personal Care,Soaps,Lux Fresh Splash Soap (Green) - 128gm,8.96E+12,39630,542,484,33394,469,421
+Personal Care,Bodywash & Shower Gel,Nivea Frangipani & Oil Shower Gel - 250ml,4.01E+12,4320,6,6,2880,4,4
+Personal Care,Soaps,Lux Purple Lotus Soap (Purple) - 100gm,8.96E+12,12825,110,98,11290,97,86
+Personal Care,Soaps,Safeguard Bar Soap Lemon Fresh - Pack of 3 x 135gm,8.01E+12,16675,36,36,15785,34,34
+Personal Care,Soaps,Golden Pearl Whitening Soap Normal - 100gm,8.96E+12,160,2,2,160,2,2
+Personal Care,Soaps,Safeguard Bar Soap Pure White - 103gm,8.01E+12,5148,35,25,4398,30,21
+Personal Care,Soaps,Capri Moisturizing Aloe-Nurture Extracts Soap | Family Pack - Pack of 3 x 150gm,8.96E+12,20665,49,43,17810,42,38
+Personal Care,Soaps,Safeguard Bar Soap Floral Scent - Pack of 3 x 135gm,8.00E+12,1745,4,4,1325,3,3
+Personal Care,Soaps,Palmolive Naturals Bar Soap | Refreshing Glow - 135gm,8.89E+12,22890,186,145,19801,161,125
+Personal Care,Soaps,Lux Velvet Glow Soap (White) | Trio Pack - Pack of 3 x 100gm,8.96E+12,51800,170,147,44840,148,128
+Personal Care,Soaps,Capri Soap White | Single - 120gm,8.96E+12,10640,82,60,9985,77,55
+Personal Care,Soaps,Lux Velvet Glow Soap (White) - 132gm,8.96E+12,14365,111,85,11395,88,72
+Personal Care,Soaps,Safeguard Bar Soap Lemon Fresh - Pack of 3 x 175gm,8.01E+12,14362,24,23,13212,22,21
+Personal Care,Handwash & Sanitizers,Palmolive Naturals Aloe & Chamomile Handwash (Refill Pouch) - 1000ml,8.89E+12,15520,21,17,11810,16,13
+Personal Care,Handwash & Sanitizers,Safeguard Handwash Liquid (Lemon Fresh) - 420ml,8.00E+12,7140,24,20,5585,19,16
+Personal Care,Soaps,Safeguard Bar Soap Floral Scent - Pack of 3 x 135gm,8.01E+12,18390,40,38,17500,38,36
+Personal Care,Handwash & Sanitizers,Siena Liquid Handwash Refill | Berry Splash - 400ml,8.96E+12,13590,64,56,12780,60,52
+Personal Care,Handwash & Sanitizers,Caresse Naturals Handwash | Pink Musk - 500ml,6.29E+12,9965,38,36,9105,35,33

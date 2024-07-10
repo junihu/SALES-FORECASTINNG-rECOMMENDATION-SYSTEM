@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Comparison Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+  <style>
+    /* Navbar styling */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #333; /* Dark background color for navbar */
+    }
+
+    /* Header styling */
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #333;
+    }
+
+/* Comparison table styling */
+.comparison-table {
+  width: 100%;
+  margin-bottom: 30px;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  text-align: left; /* Align text to the left for better readability */
+  vertical-align: top; /* Align content to the top */
+  padding: 10px; /* Added padding for better spacing */
+  border: 1px solid #ccc; /* Add border for cell separation */
+}
+
+.comparison-table th {
+  background-color: #333;
+  color: #fff;
+}
+
+.image-container {
+  width: 550px; /* Set a fixed width for the image container */
+  height: 150px; /* Set a fixed height for the image container */
+  overflow: hidden; /* Hide overflow to prevent larger images from overflowing */
+}
+
+.comparison-table img {
+  width: 90%; /* Set the width of the image to fill the container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure images behave as block elements */
+  margin: 0 auto; /* Center align the images within the container */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">ShopsMart</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/home">Home</a></li>
+          <li><a href="/customer">Customer</a></li>
+          <li><a href="/cpage2">Products</a></li>
+          <li><a href="/cpage3">Comparison</a></li>
+          <li><a href="/cpage4">Personalised</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- Comparison Page Content -->
+<div class="container">
+  <h2>Comparison Page</h2>
+
+<!-- Comparison Table -->
+<table class="table table-bordered comparison-table">
+  <tbody>
+      <!-- Existing rows for product details -->
+      <tr>
+          <th>Product</th>
+          <td>{{ products[0][1] }}</td>
+          <td>{{ products[1][1] }}</td>
+      </tr>
+      <tr>
+          <th>Image</th>
+          <td class="image-container"><img src="{{ url_for('uploaded_file', filename=products[0][4].replace("\\", "/").replace("uploads", "")) }}" alt="Product Image"></td>
+          <td class="image-container"><img src="{{ url_for('uploaded_file', filename=products[1][4].replace("\\", "/").replace("uploads", "")) }}" alt="Product Image"></td>
+      </tr>
+      <tr>
+          <th>Price</th>
+          <td>Rs. {{ products[0][2] }}</td>
+          <td>Rs. {{ products[1][2] }}</td>
+      </tr>
+      <tr>
+          <th>Description</th>
+          <td>{{ products[0][3] }}</td>
+          <td>{{ products[1][3] }}</td>
+      </tr>
+      <!-- New rows for displaying product reviews -->
+      <tr>
+          <th>Reviews</th>
+          <td>
+              <div class="product-reviews-container">
+                  <!-- Display reviews for product 1 -->
+                  <h3>{{ products[0][1] }}</h3>
+                  <div class="product-reviews">
+                      {% for review in product_reviews[0] %}
+                          <p>Username: {{ review[2] }}</p>
+                          <p>Stars: {{ review[3] }}</p>
+                          <p>Review: {{ review[4] }}</p>
+                          <hr>
+                      {% endfor %}
+                  </div>
+              </div>
+          </td>
+          <td>
+              <div class="product-reviews-container">
+                  <!-- Display reviews for product 2 -->
+                  <h3>{{ products[1][1] }}</h3>
+                  <div class="product-reviews">
+                      {% for review in product_reviews[1] %}
+                          <p>Username: {{ review[2] }}</p>
+                          <p>Stars: {{ review[3] }}</p>
+                          <p>Review: {{ review[4] }}</p>
+                          <hr>
+                      {% endfor %}
+                  </div>
+              </div>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

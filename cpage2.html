@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #333; /* Dark background color for navbar */
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+    /* Adjusted CSS for product box */
+    .product-box {
+      border: 1px solid #ddd; /* Add border around product box */
+      padding: 20px; /* Add padding */
+      margin-bottom: 30px; /* Add margin between product boxes */
+      height: 470px; /* Set the height of product box */
+      overflow: hidden; /* Hide overflow content */
+      background-color: #f9f9f9; /* Light background color for product box */
+      border-radius: 10px; /* Rounded corners for product box */
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    }
+
+    /* Adjusted CSS for product image */
+    .product-image {
+      width: 100%; /* Set image width to fill the box */
+      height: auto; /* Maintain aspect ratio */
+      max-height: 290px; /* Limit the maximum height of the image */
+    }
+
+    .product-details {
+      text-align: center; /* Center-align product details */
+      margin-top: 16px; /* Add margin at the top */
+    }
+
+    .product-name {
+      font-size: 20px; /* Increase font size for product name */
+      font-weight: bold; /* Make product name bold */
+      margin-bottom: 10px; /* Add margin below product name */
+      color: #333; /* Dark font color for product name */
+    }
+
+    .product-price {
+      font-size: 20px; /* Increase font size for price */
+      color: #007bff; /* Set price color */
+    }
+
+    /* Add more spacing for the form */
+    .form-group {
+      margin-bottom: 20px; /* Add margin below each form group */
+    }
+
+    /* Update button styling */
+    .btn-primary {
+      background-color: #007bff; /* Primary button color */
+      border: none; /* Remove button border */
+      border-radius: 5px; /* Rounded corners for button */
+      padding: 10px 20px; /* Add padding */
+      font-size: 18px; /* Increase font size */
+    }
+
+    /* Update form input styling */
+    .form-control {
+      border-radius: 5px; /* Rounded corners for form inputs */
+      border-color: #ccc; /* Light border color */
+      font-size: 16px; /* Font size for form inputs */
+    }
+
+    /* Update form label styling */
+    label {
+      font-size: 18px; /* Increase font size for labels */
+      color: #333; /* Dark font color */
+    }
+
+    /* Update page heading styling */
+    h3 {
+      font-size: 36px; /* Increase font size for page headings */
+      font-weight: bold; /* Make page headings bold */
+      margin-bottom: 30px; /* Add margin below headings */
+    }
+    .search{
+        text-align: center;
+    }
+    .search h2{
+        display: inline-block;
+        margin-right: 30px;
+        position: relative;
+        top: 10px;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">ShopsMart</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/home">Home</a></li>
+          <li><a href="/customer">Customer</a></li>
+          <li><a href="/cpage2">Products</a></li>
+          <li><a href="/cpage3">Comparison</a></li>
+          <li><a href="/cpage4">Personalised</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- Display Products -->
+<div class="container">
+  <form class="form-inline" action="/cpage2" method="POST"> <!-- Change method to POST -->
+    <input class="form-control me-2" type="text" id="searchInput" name="search_query" placeholder="Search" aria-label="Search">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+  <h3 class="text-center">Our Products</h3>
+  <form action="/cpage3" method="POST"> <!-- Add form element -->
+    <div class="row">
+      {% for product in products %}
+      <div class="col-sm-4">
+        <div class="product-box">
+          <!-- Replace backslash (\) with forward slash (/) in the image filename -->
+          {% set image_filename = product[4].replace("\\", "/").replace("uploads", "") %}
+          <a href="{{ url_for('product', product_id=product[0]) }}">
+            <img src="{{ url_for('uploaded_file', filename=image_filename) }}" alt="Product Image" class="product-image" width="200" height="200">
+          </a>
+          <div class="product-details">
+            <h4 class="product-name">{{ product[1] }}</h4>
+            <p class="product-price">Rs. {{ product[2] }}</p>
+            <input type="checkbox" name="selected_product" value="{{ product[0] }}"> Select
+            <!-- <p class="product-description">{{ product[3] }}</p> -->
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="container text-center">
+      <button type="submit" class="btn btn-primary">Compare Products</button>
+    </div>
+  </form> <!-- Close form element -->
+</div>
+
+
+<!-- Add Product Form -->
+<div class="container text-center">  
+  <h3>Add Product</h3>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <form action="/cpage2" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="text" class="form-control" id="price" name="price">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="image">Image:</label>
+          <input type="file" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload Product</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div><br>
+<script>
+  function filterProducts() {
+    var input, filter, products, product, productName, i;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    products = document.getElementsByClassName("product-box");
+    for (i = 0; i < products.length; i++) {
+      product = products[i];
+      productName = product.getElementsByClassName("product-name")[0];
+      if (productName) {
+        if (productName.innerText.toUpperCase().indexOf(filter) > -1) {
+          product.style.display = "";
+        } else {
+          product.style.display = "none";
+        }
+      }       
+    }
+  }
+</script>
+<!-- JavaScript for filtering products -->
+<script>
+  // Keywords for different niches
+  var shampooKeywords = ["shampoo", "DOVE SHAMPOO", "Conditioner"];
+  var snacksKeywords = ["Top Pops", "Takis", "Chips", "Nimco's", "Pingos", "SLANTY", "Cheese", "Lays", "Pringles", "BBQ", "Sticks", "Masala"];
+  var detergentsKeywords = ["Detergent", "Washing Powder", "Dettol", "Liquid Hand Wash", "SOAP", "Lifebuoy", "Dove", "BLACK SEED", "Intense"];
+  var beveragesKeywords = ["Coca Cola", "Fanta", "7up", "Coke", "Sprite", "PEPSI", "Sting", "Monster", "Booster", "Pakola", "Cola", "Peach Malt", "Drink", "BIG APPLE", "Dew", "Slice"];
+
+  function filterProducts() {
+    var input, filter, products, product, productName, i;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    products = document.getElementsByClassName("product-box");
+    for (i = 0; i < products.length; i++) {
+      product = products[i];
+      productName = product.getElementsByClassName("product-name")[0];
+      if (productName) {
+        if (productName.innerText.toUpperCase().indexOf(filter) > -1) {
+          product.style.display = "";
+        } else {
+          product.style.display = "none";
+        }
+      }       
+    }
+  }
+</script>
+
+
+</body>
+</html>

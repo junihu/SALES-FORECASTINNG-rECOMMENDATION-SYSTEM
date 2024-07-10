@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Personalised Recommendations</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #333; /* Dark background color for navbar */
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+    /* Adjusted CSS for product box */
+    .product-box {
+      border: 1px solid #ddd; /* Add border around product box */
+      padding: 20px; /* Add padding */
+      margin-bottom: 30px; /* Add margin between product boxes */
+      height: 470px; /* Set the height of product box */
+      overflow: hidden; /* Hide overflow content */
+      background-color: #f9f9f9; /* Light background color for product box */
+      border-radius: 10px; /* Rounded corners for product box */
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    }
+
+    /* Adjusted CSS for product image */
+    .product-image {
+      width: 100%; /* Set image width to fill the box */
+      height: auto; /* Maintain aspect ratio */
+      max-height: 290px; /* Limit the maximum height of the image */
+    }
+
+    .product-details {
+      text-align: center; /* Center-align product details */
+      margin-top: 16px; /* Add margin at the top */
+    }
+
+    .product-name {
+      font-size: 20px; /* Increase font size for product name */
+      font-weight: bold; /* Make product name bold */
+      margin-bottom: 10px; /* Add margin below product name */
+      color: #333; /* Dark font color for product name */
+    }
+
+    .product-price {
+      font-size: 20px; /* Increase font size for price */
+      color: #007bff; /* Set price color */
+    }
+
+    /* Add more spacing for the form */
+    .form-group {
+      margin-bottom: 20px; /* Add margin below each form group */
+    }
+
+    /* Styling for the separator lines and text */
+    .separator {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .separator hr {
+      border-top: 2px solid #333;
+      width: 50%;
+    }
+
+    .separator-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">ShopsMart</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home</a></li>
+        <li><a href="/customer">Customer</a></li>
+        <li><a href="/cpage2">Products</a></li>
+        <li><a href="/cpage3">Comparison</a></li>
+        <li><a href="/cpage4">Personalised</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Display Recommended Products -->
+<div class="container">
+  <h3 class="text-center">Personalized Recommendations</h3>
+
+  <!-- Separator for products with reviews -->
+  <div class="separator">
+    <hr>
+    <p class="separator-text">Products with Reviews</p>
+    <hr>
+  </div>
+
+  <div class="row">
+    {% for product in products %}
+    <div class="col-sm-4">
+      <div class="product-box">
+        <!-- Replace backslash (\) with forward slash (/) in the image filename -->
+        {% set image_filename = product[4].replace("\\", "/").replace("uploads", "") %}
+        <a href="{{ url_for('product', product_id=product[0]) }}">
+          <img src="{{ url_for('uploaded_file', filename=image_filename) }}" alt="Product Image" class="product-image" width="200" height="200">
+        </a>
+        <div class="product-details">
+          <h4 class="product-name">{{ product[1] }}</h4>
+          <p class="product-price">Rs. {{ product[2] }}</p>
+          <!-- <p class="product-description">{{ product[3] }}</p> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+</body>
+</html>

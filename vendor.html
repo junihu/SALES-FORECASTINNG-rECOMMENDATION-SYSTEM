@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+    .carousel-inner img {
+        width: 100%; /* Set width to 100% */
+        margin: auto;
+        min-height:200px;
+    }
+
+    /* Hide the carousel text when the screen is less than 600 pixels wide */
+    @media (max-width: 600px) {
+        .carousel-caption {
+        display: none; 
+        }
+    }
+    .image_container2{
+        height: 300px; /* Adjust the height as needed */
+        width: 100%;
+        text-align: center;
+        margin-top: 20px; 
+
+        
+    }
+    body{
+        font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+
+
+    }
+    .container1 {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #b3cdefc1;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+        color: #333;
+    }
+    p {
+        color: #666;
+    }
+    .module {
+        margin-bottom: 30px;
+    }
+    #img{
+        width: 90%;
+
+    }
+    .bg{
+        background-image: url("../static/images/vendor.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 300px; 
+        width: 45%;
+        margin-left: 29%;
+        
+    }
+    @media (max-width: 768px) {
+        .bg {
+            width: 70%; /* Adjust width for smaller screens */
+            margin-left: 15%; /* Adjust margin for smaller screens */
+        }
+    }
+    
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">ShopsMart</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="/vendor">Vendor</a></li>
+            <li><a href="/vpage1">Manage Inventory</a></li>
+            <li><a href="/vpage2">Ranked Inventory</a></li>
+            <li><a href="/vpage3">Ranked Personal Inventory</a></li>
+            <li><a href="/vpage4">Profit Margins</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+    <div class="image_container2">
+        <div class="bg"></div>
+    </div>
+
+
+    
+    
+    <div class="container text-center" id="description">    
+        <div class="container1">
+            <h1><b>Welcome to the Vendor Module of the Sales Forecasting and Customer Recommendation System!</b></h1><br>
+            <div class="module">
+                <h2>Introduction to the Vendor Module:</h2>
+                <p>
+                    As a retailer, your success hinges on your ability to make informed decisions about inventory management and product selection. Our Vendor Module serves as your ultimate companion in navigating the complexities of the retail landscape, providing you with the tools and insights necessary to stay ahead of the competition. Let us guide you through the key features and functionalities tailored specifically to meet your needs:
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>User Registration and Authentication Mechanisms:</h3>
+                <p>
+                    Your journey begins with the seamless creation of a user account within our secure system. Our robust user registration and authentication mechanisms ensure the confidentiality of your data and grant access only to authorized users, guaranteeing peace of mind in managing your business operations.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Product Ranking Algorithms:</h3>
+                <p>
+                    Unlock the power of data-driven decision-making with our advanced product ranking algorithms. By analyzing historical sales data, market trends, and profit margins, our algorithms provide you with invaluable insights to optimize your inventory selection. Say goodbye to guesswork and hello to precision in stocking your shelves with the most lucrative products.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Inventory Management Tools:</h3>
+                <p>
+                    Efficient inventory management lies at the heart of your retail success. Our comprehensive suite of inventory management tools empowers you to track stock levels, monitor product performance, and rank your inventory for maximum profitability. With our intuitive interface, managing your inventory has never been easier.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Market Insights Through Data Analysis:</h3>
+                <p>
+                    Stay ahead of the curve with actionable market insights generated through data analysis. Our system delves deep into market trends, customer preferences, and competitive analysis to equip you with the knowledge needed to make informed decisions about your product offerings. Harness the power of data to drive your business forward.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h3>Performance, Security, Scalability, and Usability:</h3>
+                <p>
+                    We understand that performance, security, scalability, and usability are paramount to your business operations. Our system prioritizes rapid response times, stringent security measures, horizontal scalability, and intuitive interfaces to ensure a seamless and efficient experience for            </p>
+            </div>
+            
+            <div class="module">
+                <h3>Performance, Security, Scalability, and Usability:</h3>
+                <p>
+                    We understand that performance, security, scalability, and usability are paramount to your business operations. Our system prioritizes rapid response times, stringent security measures, horizontal scalability, and intuitive interfaces to ensure a seamless and efficient experience for you as a retailer.
+                </p>
+            </div>
+            
+            <div class="module">
+                <h2>In summary:</h2>
+                <p>
+                    The Vendor Module of our Sales Forecasting and Customer Recommendation System is your gateway to success in the ever-evolving retail landscape. Whether you're a seasoned retailer or just starting out, let us empower you with the tools and insights needed to thrive in today's competitive market. Join us and revolutionize your retail journey today!
+                </p>
+            </div>
+        </div>
+    
+    </div><br>
+
+</body>
+</html>

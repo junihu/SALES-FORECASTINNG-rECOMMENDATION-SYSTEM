@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+    .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+    }
+
+    /* Highlight table rows on hover */
+    table tbody tr:hover {
+      background-color: #797979; /* Light gray */
+      cursor: pointer;
+    }
+  </style>
+<script>
+    $(document).ready(function() {
+        var updateMode = false; // Variable to track update mode
+
+        // Function to add a new row to the table
+        $('#addDataBtn').click(function() {
+            // Increment count field
+            var count = $('#csvDataTable tr').length;
+
+            var newRow = '<tr>' +
+                             '<td>' + (count + 1) + '</td>' +  // Auto-increment count field
+                             '<td><input type="text" class="form-control" name="l1Category"></td>' +
+                             '<td><input type="text" class="form-control" name="l2Category"></td>' +
+                             '<td><input type="text" class="form-control" name="productName"></td>' +
+                             '<td><input type="text" class="form-control" name="sku"></td>' +
+                             '<td><input type="number" class="form-control" name="gmv"></td>' +
+                             '<td><input type="number" class="form-control" name="grossItems"></td>' +
+                             '<td><input type="number" class="form-control" name="grossOrders"></td>' +
+                             '<td><input type="number" class="form-control" name="nmv"></td>' +
+                             '<td><input type="number" class="form-control" name="netItems"></td>' +
+                             '<td><input type="number" class="form-control" name="netOrders"></td>' +
+                         '</tr>';
+            $('#csvDataTable').append(newRow);
+        });
+
+        // Function to handle saving data
+        $('#csvDataTable').on('click', 'td', function() {
+            if (updateMode) {
+                // Enable editing mode for the clicked cell
+                $(this).attr('contenteditable', true).focus();
+                // Store the original value of the cell
+                $(this).data('originalValue', $(this).text());
+                // Store the ID of the row
+                var rowId = $(this).closest('tr').find('td:first').text(); // Assuming the ID is in the first column
+                $(this).data('rowId', rowId);
+            }
+        });
+
+        // Function to handle clicking on the "Update Data" button
+        $('#updateDataBtn').click(function() {
+            updateMode = true; // Enable update mode
+        });
+
+        $('#csvDataTable').on('click', '.delete-btn', function() {
+        var rowId = $(this).closest('tr').find('td:first').text(); // Get the ID of the row to delete
+        // Send AJAX request to delete the row
+        $.ajax({
+            type: "POST",
+            url: "/delete_row",
+            data: JSON.stringify({ rowId: rowId }), // Send the row ID to the server
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(response) {
+                alert('Row deleted successfully!');
+                location.reload(); // Reload the page
+            },
+            error: function(xhr, status, error) {
+                alert('Error occurred while deleting row.');
+            }
+        });
+    });
+
+
+// Function to handle clicking on the "Download CSV" button
+$('#downloadCsvBtn').click(function() {
+    // Send AJAX request to fetch CSV data
+    $.ajax({
+        type: 'GET',
+        url: '/download_csv',
+        success: function(response) {
+            // Create a Blob object from the CSV data
+            var blob = new Blob([response], {type: 'text/csv'});
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'data.csv';
+            link.click();
+        },
+        error: function(xhr, status, error) {
+            alert('Error occurred while downloading CSV data.');
+        }
+    });
+});
+
+// Function to handle saving data
+$('#saveDataBtn').click(function() {
+    if (updateMode) {
+        // Get the edited cell
+        var editedCell = $('#csvDataTable td[contenteditable="true"]');
+        if (editedCell.length > 0) {
+            var updatedData = {};
+            var rowData = [];
+            // Get the updated value and row ID
+            var updatedValue = editedCell.text();
+            var rowId = editedCell.data('rowId');
+            var columnIndex = editedCell.index(); // Get the index of the edited cell
+            var columnNames = ['id', 'L1_Category', 'L2_Category', 'product_name', 'sku', 'GMV', 'Gross_Items', 'Gross_Orders', 'NMV', 'Net_items', 'NetOrders'];
+            var columnName = columnNames[columnIndex];
+            rowData.push(updatedValue);
+            rowData.push(rowId);
+            updatedData[columnName] = rowData; // Use the column name as the key
+
+            // Send AJAX request to update data in the database
+            $.ajax({
+                type: "POST",
+                url: "/update_data",
+                data: JSON.stringify({ updatedData: updatedData }), // Wrap updatedData in an object
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    alert('Data updated successfully!');
+                    updateMode = false; // Disable update mode after successful update
+                    location.reload(); // Reload the page
+                },
+                error: function(xhr, status, error) {
+                    alert('Error occurred while updating data.');
+                }
+            });
+        } else {
+            alert('No cell is being edited.');
+        }
+    } else {
+        // Retrieve data from the new row
+        var newRowData = [];
+        $('#csvDataTable tr:last-child input').each(function() {
+            newRowData.push($(this).val());
+        });
+
+        // Send AJAX request to save data to the database
+        $.ajax({
+            type: 'POST',
+            url: '/save_new_row',
+            data: {rowData: newRowData},
+            success: function(response) {
+                alert('Data saved successfully!');
+                location.reload(); // Reload the page
+            },
+            error: function(xhr, status, error) {
+                alert('Error occurred while saving data.');
+            }
+        });
+    }
+});
+
+        // Function to handle clicking on table cells for updating data
+        $('#csvDataTable').on('click', 'td', function() {
+            if (updateMode) {
+                $(this).attr('contenteditable', true); // Enable editing
+            }
+        });
+
+        // Function to handle clicking on the "Update Data" button
+        $('#updateDataBtn').click(function() {
+            updateMode = true; // Enable update mode
+        });
+    });
+</script>
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">ShopsMart</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home</a></li>
+        <li><a href="/vendor">Vendor</a></li>
+        <li><a href="/vpage1">Manage Inventory</a></li>
+        <li><a href="/vpage2">Ranked Inventory</a></li>
+        <li><a href="/vpage3">Ranked Personal Inventory</a></li>
+        <li><a href="/vpage4">Profit Margins</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="alert alert-info" role="alert">
+    <strong>Guide:</strong> This is the inventory management page where you can upload a CSV file containing your inventory data. The CSV file should have the following columns:
+    <ul>
+      <li><strong>L1 Category:</strong> Field of the product</li>
+      <li><strong>L2 Category:</strong> Niche of the product</li>
+      <li><strong>Product Name:</strong> Name of the product</li>
+      <li><strong>SKU:</strong> Stock Keeping Unit value of the product</li>
+      <li><strong>GMV:</strong> Gross Merchandise Value</li>
+      <li><strong>Gross Items:</strong> Number of Gross Items</li>
+      <li><strong>Gross Orders:</strong> Number of Gross Orders</li>
+      <li><strong>NMV:</strong> Net Merchandise Value</li>
+      <li><strong>Net Items:</strong> Number of Net Items</li>
+      <li><strong>Net Orders:</strong> Number of Net Orders</li>
+    </ul>
+    Use the provided buttons to perform actions.
+  </div>
+
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  
+  <h2>Upload CSV File</h2>
+  <form action="/vpage1" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+          <label for="csvFile">Select CSV File:</label>
+          <input type="file" class="form-control-file" id="csvFile" name="csvFile" accept=".csv" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+
+  <hr>
+
+  <!-- Display CSV data -->
+  {% if csv_data %}
+  <h2>CSV Data</h2>
+  <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+              <tr>
+                  {% if column_names %}
+                    {% for header in column_names %}
+                      <th>{{ header }}</th>
+                    {% endfor %}
+                  {% endif %}
+              </tr>
+          </thead>
+          <tbody id="csvDataTable">
+              {% for row in csv_data %}
+              <tr>
+                  {% for cell in row %}
+                  <td>{{ cell }}</td>
+                  {% endfor %}
+                  <td><button class="btn btn-danger delete-btn">Delete</button></td> 
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+  {% endif %}
+
+  <!-- Add Data Button -->
+  <button id="addDataBtn" class="btn btn-primary">Add Data</button>
+
+  <!-- Update Data Button -->
+  <button id="updateDataBtn" class="btn btn-warning">Update Data</button>
+
+  <!-- Save Button -->
+  <button id="saveDataBtn" class="btn btn-success">Save</button>
+
+  <!-- Download CSV Button -->
+  <button id="downloadCsvBtn" class="btn btn-info pull-right">Download CSV</button>
+
+</div>
+
+</body>
+</html>

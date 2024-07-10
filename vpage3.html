@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ranked Personal Inventory</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Custom table styling */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* Highlighted fields */
+    .highlight {
+      font-weight: bold;
+      color: #007bff; /* Blue color */
+    }
+
+    .table_content {
+        margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">ShopsMart</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/home">Home</a></li>
+                <li><a href="/vendor">Vendor</a></li>
+                <li><a href="/vpage1">Manage Inventory</a></li>
+                <li><a href="/vpage2">Ranked Inventory</a></li>
+                <li><a href="/vpage3">Ranked Personal Inventory</a></li>
+                <li><a href="/vpage4">Profit Margins</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon"></span> {{ message }} </a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li><a href="/edit_profile"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="text-center">Ranked Personal Inventory</h2>
+    <div class="table_content">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr</th>
+                    <th>L1 Category</th>
+                    <th>L2 Category</th>
+                    <th>Product Name</th>
+                    <th>SKU</th>
+                    <th>GMV</th>
+                    <th>Gross Items</th>
+                    <th>Gross Orders</th>
+                    <th>NMV</th>
+                    <th>Net Items</th>
+                    <th>Net Orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rank_inventory %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Download CSV Button -->
+  <button id="downloadCsvBtnn" class="btn btn-info pull-right">Download CSV</button>
+</div>
+<script>
+    
+// Function to handle clicking on the "Download CSV" button
+$('#downloadCsvBtnn').click(function() {
+    // Send AJAX request to fetch CSV data
+    $.ajax({
+        type: 'GET',
+        url: '/download_csvv',
+        success: function(response) {
+            // Create a Blob object from the CSV data
+            var blob = new Blob([response], {type: 'text/csv'});
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'RankedData.csv';
+            link.click();
+        },
+        error: function(xhr, status, error) {
+            alert('Error occurred while downloading CSV data.');
+        }
+    });
+});
+</script>
+</body>
+</html>

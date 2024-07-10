@@ -1,0 +1,161 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <title>Verification Page</title> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative; 
+        }
+
+        .verification-form {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            background-color: #3f83ffcc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+            position: relative; 
+        }
+
+        .verification-input {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .continue-button {
+            background-color: #ff8800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            /* opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed; */
+        }
+
+        .continue-button2 {
+            background-color: #ff8800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            /* cursor: pointer; */
+            margin-top: 20px;
+            opacity: 0.5;
+            /* pointer-events: none; */
+            /* cursor: not-allowed; */
+        }
+
+        .continue-button:hover {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px; 
+            width: 200px;
+        }
+    </style>
+</head> 
+
+<body> 
+    <!--<img src="images/logo1.png" alt="logo" class="logo">-->
+    <div class="verification-form">
+        <h2>Enter Verification Code</h2>
+        <form id="verificationForm" action="/verify" method="POST">
+            <input type="text" class="verification-input" maxlength="1" name="ab" required oninput="moveToNextField(this, 'cd')">
+            <input type="text" class="verification-input" maxlength="1" name="cd" required oninput="moveToNextField(this, 'ef')">
+            <input type="text" class="verification-input" maxlength="1" name="ef" required oninput="moveToNextField(this, 'gh')">
+            <input type="text" class="verification-input" maxlength="1" name="gh" required oninput="moveToNextField(this, 'ij')">
+            <input type="text" class="verification-input" maxlength="1" name="ij" required oninput="moveToNextField(this, 'kl')">
+            <input type="text" class="verification-input" maxlength="1" name="kl" required oninput="moveToNextField(this, null)" onfocus="checkFormCompletion()">
+            <br><div id="timer"></div><br>
+            <!-- <button type="submit" class="continue-button" id="submitButton">Continue</button> -->
+            <button id="resendBtn" onclick="resendVerification()" class="continue-button2" disabled>Resend</button>
+        </form>
+        
+    </div>
+
+    <script>
+        var timer = 60;
+        var interval = setInterval(countdown, 1000);
+        // var button = document.getElementById('resendBtn');
+
+        function countdown() {
+            var timerDisplay = document.getElementById('timer');
+            timerDisplay.textContent = 'Resend code in ' + timer + ' seconds';
+            if (timer <= 0) {
+                clearInterval(interval);
+                // document.getElementById('resendBtn').opacity = '1';
+                // document.getElementById('resendBtn').pointerEvents = 'auto';
+                // document.getElementById('resendBtn').cursor = 'pointer';
+                document.getElementById('resendBtn').disabled = false;
+                document.getElementById('resendBtn').classList.remove('continue-button2')
+                document.getElementById('resendBtn').classList.add('continue-button')
+                timerDisplay.textContent = '';
+            } else {
+                timer--;
+            }
+        }
+
+        function moveToNextField(currentInput, nextFieldName) {
+            if (currentInput.value.length === currentInput.maxLength && nextFieldName !== null) {
+                document.getElementsByName(nextFieldName)[0].focus();
+            }
+            checkFormCompletion();
+        }
+
+        function checkFormCompletion() {
+            var inputs = document.querySelectorAll('.verification-input');
+            var isFormComplete = true;
+            inputs.forEach(function(input) {
+                if (input.value.length !== input.maxLength) {
+                    isFormComplete = false;
+                }
+            });
+            // document.getElementById('submitButton').disabled = !isFormComplete;
+            if (isFormComplete) {
+                document.getElementById('verificationForm').submit();
+            }
+        }
+
+        function resendVerification() {
+        var xhr = new XMLHttpRequest();
+        document.getElementById('resendBtn').disabled = true;
+        document.getElementById('resendBtn').classList.remove('continue-button');
+        document.getElementById('resendBtn').classList.add('continue-button2');
+        timer = 60;
+        interval = setInterval(countdown, 1000);
+        xhr.open('GET', '/resend_verification', true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                
+                // document.getElementById('resendBtn').opacity = '0.5';
+                // document.getElementById('resendBtn').pointerEvents = 'none';
+                // document.getElementById('resendBtn').cursor = 'not-allowed';
+            } else {
+                alert("error");
+            }
+        };
+        xhr.send();
+    }
+    </script>
+</body> 
+
+</html>
